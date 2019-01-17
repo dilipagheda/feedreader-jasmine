@@ -1,6 +1,6 @@
 # Project Overview
 
-This project is a web-based application that reads RSS feeds. 
+This project is a web-based application that reads RSS feeds. It uses Jasmine framework for unit tests.
 
 # How to run this project
 1. Download or Clone the project folder in your local driver using link : https://github.com/dilipagheda/feedreader-jasmine.git
