@@ -41,9 +41,9 @@ $(function () {
          */
 
         it('check that the urls are defined and not empty', function () {
-            allFeeds.forEach((c) => {
-                expect(c.url).toBeDefined();
-                expect(c.url.length).not.toBe(0);
+            allFeeds.forEach((feed) => {
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
             });
         });
 
@@ -55,9 +55,9 @@ $(function () {
          */
 
         it('check that variable - name is defined and is not empty', function () {
-            allFeeds.forEach((c) => {
-                expect(c.name).toBeDefined();
-                expect(c.name.length).not.toBe(0);
+            allFeeds.forEach((feed) => {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
             });
         });
     });
@@ -73,8 +73,9 @@ $(function () {
         * hiding/showing of the menu element.
         */
         it('check that the menu element is hidden by default', function () {
-            let className = $('body').attr('class');
-            expect(className).toBe('menu-hidden');
+            let hasMenuHiddenClass = $('body').hasClass('menu-hidden');
+            console.log("has:"+hasMenuHiddenClass);
+            expect(hasMenuHiddenClass).toBe(true);
         });
         /*  Write a test that ensures the menu changes
         * visibility when the menu icon is clicked. This test
@@ -83,12 +84,12 @@ $(function () {
         */
         it('check that menu is visible when menu icon is clicked and hides when clicked again', function () {
             $('a.menu-icon-link').click();
-            let className = $('body').attr('class');
-            expect(className).toBe('');
+            let hasMenuHiddenClass = $('body').hasClass('menu-hidden');
+            expect(hasMenuHiddenClass).toBe(false);
 
             $('a.menu-icon-link').click();
-            className = $('body').attr('class');
-            expect(className).toBe('menu-hidden');
+            hasMenuHiddenClass = $('body').hasClass('menu-hidden');
+            expect(hasMenuHiddenClass).toBe(true);
         });
 
     });
@@ -108,10 +109,11 @@ $(function () {
         });
 
         it('check that once loadFeed function is done, it loads data in the .feed container', function () {
-            console.log("test5");
-            let a = $('.feed').children().length;
-            console.log(a);
-            expect(a).toBeGreaterThan(0);
+            //Get the total count of child elements of .feed that has a class.entry
+            let entryCount = $('.feed .entry').length;
+            //Assert that entryCount is greater than 0!
+            expect(entryCount).toBeGreaterThan(0);
+            
         });
 
     });
