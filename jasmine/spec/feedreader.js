@@ -74,7 +74,6 @@ $(function () {
         */
         it('check that the menu element is hidden by default', function () {
             let hasMenuHiddenClass = $('body').hasClass('menu-hidden');
-            console.log("has:"+hasMenuHiddenClass);
             expect(hasMenuHiddenClass).toBe(true);
         });
         /*  Write a test that ensures the menu changes
