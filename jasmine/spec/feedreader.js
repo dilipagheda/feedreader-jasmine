@@ -163,4 +163,27 @@ $(function () {
             steps();
         });
     });
+
+    describe('New Feed Selection using call backs', function () {
+        let initialFeed,
+            finalFeed;
+        beforeEach(function(done){
+
+            loadFeed(0, function(){
+
+                initialFeed = $('.feed').text();
+
+                    loadFeed(1, function() {
+
+                        finalFeed = $('.feed').text();         
+
+                        done() ; // call done when variables are fed and tests can begin
+                    });
+            });
+        });
+
+        it(`check that new feed is different than old one`, function () {
+            expect(finalFeed).not.toBe(initialFeed);
+        });
+    });
 }());
